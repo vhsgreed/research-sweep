@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax check
+        run: python3 -m py_compile research-sweep.py
+      - name: Smoke test (--days 0, tiny)
+        run: |
+          python3 research-sweep.py frontier "test" --days 0 --out /tmp/sweep-test.md
+          test -f /tmp/sweep-test.md && echo "smoke OK: $(wc -l < /tmp/sweep-test.md) lines"
