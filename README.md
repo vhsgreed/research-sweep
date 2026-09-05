@@ -25,3 +25,7 @@ python3 research-sweep.py geopolitics "EU AI act" --days 3 --out geo.md
 
 Markdown with sections per source/query, timestamps, and URLs — ready to be
 fed into an LLM summarizer or saved as a research log.
+
+## Links
+
+Part of the [vhsgreed](https://vhsgreed.win) toolset: data, code, and methods in the open.
